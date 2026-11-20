@@ -1,0 +1,33 @@
+# Local observability for Claude Code runs in job-hunt (traces, logs, metrics).
+#
+#   claude --OTLP/http--> 127.0.0.1:14318 --> collector --> Tempo / Loki / Prometheus --> Grafana
+#
+# One container (grafana/otel-lgtm): OTel Collector + Tempo + Loki + Prometheus + Grafana,
+# datasources pre-provisioned. Everything binds to 127.0.0.1 only — prompts are stored
+# here in plain text, so nothing may leave the machine.
+#
+# Separate from ~/git/ibkr-ai-trader's stack on purpose: that collector deletes the
+# `prompt` attribute, which is exactly what we want to see here.
+#
+#   docker compose -f observability/docker-compose.yml up -d
+#   Grafana: http://localhost:3001  (admin / admin, anonymous admin is on)
+#
+# The Claude Code side (env vars) is in ~/.claude/settings.json → "env";
+# see observability/README.md.
+
+services:
+  lgtm:
+    image: grafana/otel-lgtm:0.40.0
+    container_name: job-hunt-lgtm
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:3000"    # Grafana
+      - "127.0.0.1:14317:4317"   # OTLP gRPC
+      - "127.0.0.1:14318:4318"   # OTLP HTTP
+    volumes:
+      - lgtm-data:/data
+    environment:
+      GF_PATHS_DATA: /data/grafana
+
+volumes:
+  lgtm-data:

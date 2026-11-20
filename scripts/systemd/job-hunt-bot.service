@@ -1,0 +1,27 @@
+# Telegram bot for job-hunt: runs /hunt on command from the phone.
+# Install (adjust the paths if the repo is not in ~/Documents/job-hunt):
+#   mkdir -p ~/.config/systemd/user
+#   cp scripts/systemd/job-hunt-bot.service ~/.config/systemd/user/
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now job-hunt-bot
+# Logs: journalctl --user -u job-hunt-bot -f   (run transcripts: logs/bot/)
+#
+# Bound to the graphical session: Playwright's Chrome needs the desktop, so the bot
+# starts when you log in and stops when you log out. A locked screen is fine.
+
+[Unit]
+Description=job-hunt Telegram bot
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/Documents/job-hunt
+ExecStart=/usr/bin/python3 %h/Documents/job-hunt/scripts/tg_bot.py
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+RestartSec=30
+TimeoutStopSec=60
+
+[Install]
+WantedBy=graphical-session.target

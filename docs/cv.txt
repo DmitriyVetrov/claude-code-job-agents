@@ -1,0 +1,18 @@
+ALEX EXAMPLE — .NET Backend Engineer (fictional sample CV)
+Location: Example City, Spain · Open to remote (EU)
+
+SUMMARY
+Backend engineer, 8 years with C#/.NET, ASP.NET Core, SQL Server, Azure; CI/CD with
+GitHub Actions; Docker and Kubernetes basics. Not interested in: frontend-only,
+WPF/desktop-only, on-site outside Example City.
+
+EXPERIENCE
+2021–2025  Senior .NET Developer, Example Energy — microservices, Azure Service Bus
+2017–2021  .NET Developer, Example Logistics — REST APIs, EF Core, SQL Server
+
+SKILLS
+C#, .NET 8, ASP.NET Core, EF Core, SQL Server, PostgreSQL, Azure, Docker, Kubernetes,
+GitHub Actions, Terraform (basic)
+
+LANGUAGES
+English C1, Spanish B2

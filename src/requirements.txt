@@ -1,0 +1,10 @@
+# Microsoft Agent Framework + the Anthropic (Claude) provider.
+# The package is still pre-release — install with the flag:
+#   pip install --pre -r requirements.txt
+agent-framework-anthropic
+
+# HTTP client for the function tools (collecting jobs from open APIs/feeds)
+httpx
+
+# .env loading
+python-dotenv

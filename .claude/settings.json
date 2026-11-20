@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Write(data/ai-market/staging/**)",
+      "Edit(data/ai-market/staging/**)",
+      "Bash(python3 scripts/ai_market_stats.py *)",
+      "Bash(cat data/ai-market/staging/* >> data/ai-market/postings.jsonl)",
+      "Bash(rm -r data/ai-market/staging/*)"
+    ]
+  }
+}

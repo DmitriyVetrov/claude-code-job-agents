@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+browser-data/
+.playwright-mcp/
+logs/
+data/seen/
+data/ai-market/
+docs/cv/
+__pycache__/
+.venv/
+.claude/settings.local.json
